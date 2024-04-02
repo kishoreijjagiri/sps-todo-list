@@ -1,0 +1,11 @@
+package com.example.sps_todo_list.domain
+
+import com.example.sps_todo_list.data.dao.TodoDao
+import com.example.sps_todo_list.data.entity.TodoEntity
+import javax.inject.Inject
+
+class TodoRepositoryImpl@Inject constructor(var todoDao : TodoDao):TodoRepository {
+    override suspend fun saveTodo(todo: TodoEntity) {
+        todoDao.insertTodo(todo)
+    }
+}
