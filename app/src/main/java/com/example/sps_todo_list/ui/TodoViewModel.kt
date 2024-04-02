@@ -9,9 +9,9 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class TodoViewModel @Inject constructor(private val repository: TodoRepository) :ViewModel(){
+class TodoViewModel @Inject constructor(private val repository: TodoRepository) : ViewModel() {
 
-    fun saveTodo(todoEntity: TodoEntity){
+    fun saveTodo(todoEntity: TodoEntity) {
         viewModelScope.launch {
             repository.saveTodo(todoEntity)
         }

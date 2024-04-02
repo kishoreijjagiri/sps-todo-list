@@ -7,7 +7,7 @@ import com.example.sps_todo_list.data.entity.TodoEntity
 
 @Dao
 interface TodoDao {
-    @Insert(onConflict =OnConflictStrategy.REPLACE )
-    suspend fun insertTodo( todo :TodoEntity)
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertTodo(todo: TodoEntity)
 
 }

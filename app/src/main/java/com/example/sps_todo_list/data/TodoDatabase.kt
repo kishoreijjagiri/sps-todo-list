@@ -6,6 +6,6 @@ import com.example.sps_todo_list.data.dao.TodoDao
 import com.example.sps_todo_list.data.entity.TodoEntity
 
 @Database(entities = [TodoEntity::class], version = 1)
-abstract class TodoDatabase :RoomDatabase() {
-    abstract val dao : TodoDao
+abstract class TodoDatabase : RoomDatabase() {
+    abstract val dao: TodoDao
 }

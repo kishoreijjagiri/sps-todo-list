@@ -2,7 +2,6 @@ package com.example.sps_todo_list.di
 
 import android.app.Application
 import androidx.room.Room
-import androidx.room.RoomDatabase
 import com.example.sps_todo_list.data.TodoDatabase
 import com.example.sps_todo_list.domain.TodoRepository
 import com.example.sps_todo_list.domain.TodoRepositoryImpl
