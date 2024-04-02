@@ -1,5 +1,6 @@
 package com.example.sps_todo_list.ui
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sps_todo_list.data.entity.TodoEntity
@@ -14,6 +15,10 @@ class TodoViewModel @Inject constructor(private val repository: TodoRepository) 
     fun saveTodo(todoEntity: TodoEntity) {
         viewModelScope.launch {
             repository.saveTodo(todoEntity)
+
+            var list =repository.getAllTodos()
+
+            Log.v("kishore",list.toString())
         }
 
     }
