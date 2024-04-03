@@ -1,8 +1,9 @@
-package com.example.sps_todo_list.ui
+package com.example.sps_todo_list.ui.pages.todolist
 
 import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sps_todo_list.data.entity.TodoEntity
@@ -23,7 +24,12 @@ class TodoViewModel @Inject constructor(private val repository: TodoRepository) 
 
     private val _searchQuery = mutableStateOf("")
     val searchQuery: State<String> = _searchQuery
-    private var searchJob: Job?=null
+    private var searchJob: Job? = null
+    val notes = mutableStateOf("")
+
+    var loading =  mutableStateOf(false)
+    val openDialog =  mutableStateOf(false)
+
 
     fun saveTodo(todoEntity: TodoEntity) {
         viewModelScope.launch {
@@ -31,15 +37,16 @@ class TodoViewModel @Inject constructor(private val repository: TodoRepository) 
         }
     }
 
-    fun onSearch(word:String) {
+
+    fun onSearch(word: String) {
         _searchQuery.value = word
         searchJob?.cancel()
-        searchJob=viewModelScope.launch {
+        searchJob = viewModelScope.launch {
             delay(500)
-            var temList = repository.getTodos(word).filter { s->s.notes.contains(word) }
+            var temList = repository.getTodos(word).filter { s -> s.notes.contains(word) }
 
-            _list.value=temList
-            Log.v("kishore",temList.toString())
+            _list.value = temList
+            Log.v("kishore", temList.toString())
         }
     }
 
