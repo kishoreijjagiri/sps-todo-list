@@ -1,9 +1,8 @@
-package com.example.sps_todo_list.ui.pages.todolist
+package com.example.sps_todo_list.ui.pages
 
 import android.util.Log
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.sps_todo_list.data.entity.TodoEntity

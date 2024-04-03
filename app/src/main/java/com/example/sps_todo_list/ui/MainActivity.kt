@@ -9,7 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.sps_todo_list.ui.pages.addtodo.AddTodoScreen
 import com.example.sps_todo_list.ui.pages.todolist.LoadTodoListScreen
-import com.example.sps_todo_list.ui.pages.todolist.TodoViewModel
+import com.example.sps_todo_list.ui.pages.TodoViewModel
 import com.example.sps_todo_list.ui.theme.SpstodolistTheme
 import com.example.sps_todo_list.utils.Routes
 import dagger.hilt.android.AndroidEntryPoint
@@ -20,6 +20,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             val navController = rememberNavController()
+            //shared viewmodel
             val viewModel: TodoViewModel = hiltViewModel()
             SpstodolistTheme {
                 NavHost(navController = navController, startDestination = Routes.TODO_LIST){
