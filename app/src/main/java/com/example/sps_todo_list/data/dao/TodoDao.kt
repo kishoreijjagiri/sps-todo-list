@@ -15,4 +15,8 @@ interface TodoDao {
     @Query("select * from TodoEntity")
     suspend fun getTodo(): List<TodoEntity>
 
+    @Query("select * from TodoEntity WHERE notes LIKE '%' ||:word|| '%'")
+    suspend fun getTodos(word :String): List<TodoEntity>
+
+
 }

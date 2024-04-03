@@ -18,7 +18,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color.Companion.Yellow
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
@@ -38,16 +37,12 @@ class MainActivity : ComponentActivity() {
                 NavHost(navController = navController, startDestination = Routes.TODO_LIST){
                     composable(Routes.TODO_LIST){
                         LoadTodoListScreen(
-                            onNavigate = {
-                                navController.navigate(it.route)
-                            }
+                            navController
                         )
                     }
                     composable(Routes.ADD_TODO){
                         AddTodoScreen (
-                            onNavigate = {
-                                navController.navigate(it.route)
-                            }
+                            navController
                                 )
 
                     }

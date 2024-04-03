@@ -12,4 +12,9 @@ class TodoRepositoryImpl @Inject constructor(var todoDao: TodoDao) : TodoReposit
     override suspend fun getAllTodos(): List<TodoEntity> {
         return todoDao.getTodo()
     }
+
+    override suspend fun getTodos(word: String): List<TodoEntity> {
+        return todoDao.getTodos(word)
+    }
+
 }
