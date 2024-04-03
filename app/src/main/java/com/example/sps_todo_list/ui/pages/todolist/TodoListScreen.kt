@@ -94,7 +94,7 @@ fun LoadTodoListScreen(
                             viewModel.openDialog.value = false
                         },
                         title = {
-                            Text(text = "Error")
+                            Text(text = "Failed to add TODO")
                         },
                         text = {
                             Text("you entered text as ERROR it will not save")

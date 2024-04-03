@@ -14,10 +14,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.sps_todo_list.data.entity.TodoEntity
 import com.example.sps_todo_list.ui.pages.TodoViewModel
+import com.example.sps_todo_list.utils.TodoValidatore
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -38,7 +40,7 @@ fun AddTodoScreen(
                 viewModel.notes.value = it
             },
             modifier = Modifier
-                .fillMaxWidth()
+                .fillMaxWidth().testTag("notes_tag")
                 .padding(16.dp),
             label = { Text("Enter your Notes") },
             singleLine = true
@@ -50,13 +52,16 @@ fun AddTodoScreen(
                     viewModel.openDialog.value=true
                     onNavigate.popBackStack()
                 }else{
-                    viewModel.saveTodo(TodoEntity(viewModel.notes.value))
-                    viewModel.loading.value = true
-                    scope.launch {
-                        delay(3000)
-                        viewModel.loading.value = false
-                        onNavigate.popBackStack()
+                    if(TodoValidatore.validateTodo(viewModel.notes.value)){
+                        viewModel.saveTodo(TodoEntity(viewModel.notes.value))
+                        viewModel.loading.value = true
+                        scope.launch {
+                            delay(3000)
+                            viewModel.loading.value = false
+                            onNavigate.popBackStack()
+                        }
                     }
+
                 }
 
             }, modifier = Modifier.padding(16.dp)
